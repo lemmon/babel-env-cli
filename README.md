@@ -17,6 +17,7 @@ Usage
   $ babel-env <input.js>
 
 Options
+  -h, --help   Show this help
   -o, --output Output file
   -w, --watch  Watch JS source directory for changes
 
