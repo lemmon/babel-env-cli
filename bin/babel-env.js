@@ -113,16 +113,21 @@ const transformJS = (file, code) => (
 function buildJS(props) {
   const t0 = Date.now()
   transformJS(props.from, props.code).then(res => {
-    const code = res.code + '\n'
+    res.code += '\n'
     if (props.to) {
-      fs.writeFile(props.to, code, err => {
-        if (err) throw err
-        const t1 = new Date()
-        const ts = (t1.valueOf() - t0) / 1000
-        console.log(`${code.length} bytes written to ${props.to} (${ts.toFixed(2)} seconds) at ${t1.toLocaleTimeString()}`)
-      })
+      // source map
+      if (res.map) {
+        const mapFile = props.to + '.map'
+        res.code += `//# sourceMappingURL=${path.basename(mapFile)}\n`
+        fs.writeFileSync(mapFile, JSON.stringify(res.map))
+      }
+      // js result
+      fs.writeFileSync(props.to, res.code)
+      // log
+      const t1 = new Date()
+      console.log(`${res.code.length} bytes written to ${props.to} (${((t1.valueOf() - t0) / 1000).toFixed(2)} seconds) at ${t1.toLocaleTimeString()}`)
     } else {
-      process.stdout.write(code)
+      process.stdout.write(res.code)
     }
   }).catch(err => {
     console.error(err)
