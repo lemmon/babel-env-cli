@@ -1,0 +1,7 @@
+{
+  "files.exclude": {
+    "**/*.lock": true,
+    "**/node_modules": true
+  },
+  "files.trimFinalNewlines": true
+}
