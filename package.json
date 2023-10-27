@@ -8,8 +8,8 @@
     "babel-env": "bin/babel-env.js"
   },
   "dependencies": {
-    "@babel/core": "~7.22.0",
-    "@babel/preset-env": "~7.22.0",
+    "@babel/core": "~7.23.0",
+    "@babel/preset-env": "~7.23.0",
     "chalk": "^4.1.0",
     "chokidar": "~3.5.0",
     "file-exists": "^5.0.1",
