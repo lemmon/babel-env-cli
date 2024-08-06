@@ -1,6 +1,6 @@
 {
   "name": "babel-env-cli",
-  "version": "0.7.3",
+  "version": "0.8.0",
   "description": "Babel command line.",
   "author": "lemmon",
   "license": "MIT",
